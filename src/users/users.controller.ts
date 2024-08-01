@@ -27,6 +27,13 @@ export class UsersController {
   createUser(@Body() body: CreateUserDto) {
     return this.authService.signup(body.email, body.password);
   }
+  @Post('/signin')
+  signin(@Body() body: CreateUserDto) {
+    return this.authService.signin(body.email, body.password);
+  }
+  @Post('/signout')
+  signout() {}
+
   @Get('/users')
   getAllUsers() {
     return this.usersService.findAll();
@@ -49,10 +56,6 @@ export class UsersController {
   findAllUsers(@Query('email') email: string) {
     return this.usersService.find(email);
   }
-  @Post('/signin')
-  signin() {}
-  @Post('/signout')
-  signout() {}
 
   @Delete('/:id')
   removeUser(@Param('id') id: string) {
