@@ -10,10 +10,13 @@ export class UsersService {
     private repo: Repository<User>,
   ) {}
   create(email: string, password: string) {
-      const user = this.repo.create({ email, password });
-      return this.repo.save(user);
+    const user = this.repo.create({ email, password });
+    return this.repo.save(user);
   }
   findOne(id: number) {
+    if (!id) {
+      throw new NotFoundException('User not found');
+    }
     return this.repo.findOne({ where: { id } });
   }
   find(email: string) {
@@ -38,5 +41,5 @@ export class UsersService {
     }
     console.log('Removed User with id', id);
     return this.repo.remove(user);
-  } 
+  }
 }
