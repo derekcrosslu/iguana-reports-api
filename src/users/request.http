@@ -21,7 +21,7 @@ Content-Type: application/json
 POST http://localhost:3000/auth/signout
 
 
-### Get the current user
+### Get the current user using custom decorator
 GET http://localhost:3000/auth/whoAmI
 
 
